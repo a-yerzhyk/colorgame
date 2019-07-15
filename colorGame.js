@@ -1,16 +1,16 @@
-var squares = document.querySelectorAll(".square");
-var colorDisplay = document.getElementById("colorDisplay");
-var messageDisplay = document.querySelector("#message");
-var h1 = document.querySelector("h1");
-var resetButton = document.querySelector("#reset");
-var modeButtons = document.querySelectorAll(".mode");
+let squares = document.querySelectorAll(".square");
+let colorDisplay = document.getElementById("colorDisplay");
+let messageDisplay = document.querySelector("#message");
+let h1 = document.querySelector("h1");
+let resetButton = document.querySelector("#reset");
+let modeButtons = document.querySelectorAll(".mode");
 
 //Number of squares defined by game mode. Default mode is "Easy" with 3 squares.
-var numSquares = 3;
+let numSquares = 3;
 //all colors
-var colors = generateColors(numSquares);
+let colors = generateColors(numSquares);
 //color to win game
-var pickedColor = pickColor();
+let pickedColor = pickColor();
 
 //Initializing after page first loading
 init();
@@ -37,7 +37,7 @@ function reset () {
 	//change colorDisplay to match picked color
 	colorDisplay.textContent = pickedColor;
 	//change colors of squares
-	for (var i = 0; i < squares.length; i++) {
+	for (let i = 0; i < squares.length; i++) {
 		if(colors[i]){
 			squares[i].style.backgroundColor = colors[i];
 			squares[i].style.display = "block";
@@ -51,8 +51,8 @@ function reset () {
 }
 
 function setupModeButtons () {
-	for (var i = 0; i < modeButtons.length; i++) {
-		modeButtons[i].addEventListener("click", function () {
+	for (let i = 0; i < modeButtons.length; i++) {
+		modeButtons[i].addEventListener("click", () => {
 			modeButtons[0].classList.remove("selected");
 			modeButtons[1].classList.remove("selected");
 			this.classList.add("selected");
@@ -63,11 +63,11 @@ function setupModeButtons () {
 }
 
 function setupSquares () {
-	for (var i = 0; i < squares.length; i++) {
+	for (let i = 0; i < squares.length; i++) {
 		//add click listeners 
-		squares[i].addEventListener("click", function () {
+		squares[i].addEventListener("click", () => {
 			//take color of clicked square
-			var clickedColor = this.style.backgroundColor;
+			let clickedColor = this.style.backgroundColor;
 			//check is color equal to win color
 			if (clickedColor === pickedColor) {
 				messageDisplay.textContent = "Correct!";
@@ -85,7 +85,7 @@ function setupSquares () {
 }
 
 function changeAllColors (color) {
-	for (var i = 0; i < squares.length; i++) {
+	for (let i = 0; i < squares.length; i++) {
 		//change squares color
 		squares[i].style.backgroundColor = color;
 		//change header color
@@ -94,15 +94,15 @@ function changeAllColors (color) {
 }
 
 function pickColor () {
-	var random = Math.floor(Math.random() * colors.length);
+	let random = Math.floor(Math.random() * colors.length);
 	//return color from an array with random index
 	return colors[random];
 }
 
 function generateColors(num) {
-	var arr = [];
+	let arr = [];
 	//push random colors to an array
-	for (var i = 0; i < num; i++) {
+	for (let i = 0; i < num; i++) {
 		arr.push(randomColor());
 	}
 
@@ -111,14 +111,14 @@ function generateColors(num) {
 
 function randomColor () {
 	//randomize red from 0 to 255
-	var r = Math.floor(Math.random() * 256);
+	let r = Math.floor(Math.random() * 256);
 	//randomize green from 0 to 255
-	var g = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
 	//randomize blue from 0 to 255
-	var b = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
 
 	//make rgb
-	color = "rgb(" + r + ", " + g + ", " + b + ")";
+	let color = "rgb(" + r + ", " + g + ", " + b + ")";
 
 	return color;
 }
