@@ -1,3 +1,3 @@
 # colorgame
-This is a game, in which you need to guess the color witten in rgb() format.
-The idea of the game is not mine.
+It is a game, in which you need to guess the color witten in rgb() format.
+This project was created with the course on Udemy, developed by Colt Steele.
